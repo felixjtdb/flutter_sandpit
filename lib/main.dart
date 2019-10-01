@@ -13,23 +13,40 @@ class FelixTown extends StatefulWidget {
   _NameTaker createState() => _NameTaker();
 }
 
-
 class _NameTaker extends State<FelixTown> {
   int population = 1;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () {
-          setState(() {
-            population++;
-          });
-        },
-        child: new Container(
-          decoration: BoxDecoration(
-            color: Colors.purple[900]
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text("Felix Town"),
           ),
-        ),
-      );
+          body: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                  color: Colors.purple[900],
+                  height: 100,
+                  width: 100,
+                ),
+                Expanded(child: Text('$population')),
+                Container(
+                  color: Colors.blue[900],
+                  height: 100,
+                  width: 100,
+                )
+              ],
+            ),
+          ),
+        floatingActionButton: FloatingActionButton(
+            onPressed: () { setState(() {
+              population++;
+            });
+          }),
+      )
+    );
   }
 }
